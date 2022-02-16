@@ -4,8 +4,9 @@
 
 Operational Security Capabilities for IP Network InfrastructureE. Vyncke
 Internet-Draft                                                     Cisco
-Intended status: Informational                                 J. Iurman
-Expires: 20 August 2022                              Université de Liège
+Intended status: Informational                                 B. Donnet
+Expires: 20 August 2022                                        J. Iurman
+                                                     Université de Liège
                                                         16 February 2022
 
 
@@ -14,9 +15,8 @@ Expires: 20 August 2022                              Université de Liège
 
 Abstract
 
-   When doing some Internet-wide measurements, it is often necessary to
-   send active probes to either collaborating parties or non-
-   collaborating parties; the latter is similar scan and could be
+   Active measurements at Internet-scale can target either collaborating
+   parties or non-collaborating ones.  This is similar scan and could be
    perceived as aggressive.  This document proposes a couple of simple
    techniques allowing any party or organization to understand what this
    unsolicited packet is, what is its purpose, and more important who to
@@ -79,24 +79,27 @@ Table of Contents
      2.2.  Probe Description Text
    3.  In-band Probe Attribution
    4.  Out-of-band Probe Attribution
-   5.  Security Considerations
-   6.  IANA Considerations
-   7.  Normative References
+   5.  Ethical Considerations
+   6.  Security Considerations
+   7.  IANA Considerations
+   8.  References
+     8.1.  Normative References
+     8.2.  Informative References
    Acknowledgments
    Authors' Addresses
 
 1.  Introduction
 
-   When doing some Internet-wide measurements, it is frequently
-   necessary to send active probes to either collaborating parties or
-   non-collaborating parties.
+   Active measurements at Internet-scale can target either collaborating
+   parties or non-collaborating ones.  Such measurements includes
+   [LARGE_SCALE] and [RFC7872].
 
-   Sending unsolicited probes should be done at a rate low enough to
-   avoid causing a denial of services.  But even at a low rate, those
-   probes could trigger an alarm that will request some investigation by
-   either the party receiving the probe (i.e., when the probe
-   destination address is one address assigned to the receiving party)
-   or by a third party having some devices where those probes are
+   Sending unsolicited probes should obviously be done at a rate low
+   enough to avoid wasting other parties resources.  But even at a low
+   rate, those probes could trigger an alarm that will request some
+   investigation by either the party receiving the probe (i.e., when the
+   probe destination address is one address assigned to the receiving
+   party) or by a third party having some devices where those probes are
    transiting (e.g., an Internet transit router).
 
    This document suggests a couple of simple techniques allowing any
@@ -119,10 +122,12 @@ Table of Contents
    This document defines a "probe description URI" as an URI pointing
    to:
 
+   *  "Probe Description", see Section 2.2, e.g., "https://example.net/
+      measurement.txt";
+
    *  an email address, e.g., "mailto:eric@example.net";
 
-   *  a web page, e.g., "https://example.net/probe containing a "Probe
-      Description", see Section 2.2.
+   *  a phone number to call, e.g., "tel:++1-201-555-0123".
 
 2.2.  Probe Description Text
 
@@ -130,8 +135,6 @@ Table of Contents
    other nodes over the Internet, it should create a text file following
    the syntax described in section 3 of [I-D.draft-foudil-securitytxt]
    and should have the following fields:
-
-   *  digital signature;
 
    *  contact;
 
@@ -191,7 +194,23 @@ Table of Contents
    The constructed URI must be a reference to the "Probe description
    Text" (see Section 2.2).
 
-5.  Security Considerations
+5.  Ethical Considerations
+
+   Executing some measurement experiences over the global Internet
+   obviously require some ethical considerations when transit/
+   destination non-solicited parties are involved.
+
+   This document proposes a common way to identity the source and the
+   purpose of active probing in order to reduce the potential burden on
+   the non-solicited parties.
+
+   But there are other considerations to be taken into account: from the
+   payload content (e.g., is the encoding valid ?) to the transmission
+   rate (see also [IPV6_TOPOLOGY] and [IPV4_TOPOLOGY] for some probing
+   speed impacts).  Those considerations are out of scope of this
+   document.
+
+6.  Security Considerations
 
    While it is expected that only good-willing researchers will use
    these techniques, they will simplify and shorten the time to identify
@@ -200,13 +219,13 @@ Table of Contents
    As both proposed techniques rely on the IP source address, they are
    vulnerable to IP spoofing.
 
-6.  IANA Considerations
+7.  IANA Considerations
 
    The "Well-Known URIs" registry should be updated with the following:
 
    *  additional values (using the template from [RFC8615]):
 
-   *  URI suffix: security.txt
+   *  URI suffix: probing.txt
 
    *  Change controller: IETF
 
@@ -214,7 +233,9 @@ Table of Contents
 
    *  Status: permanent
 
-7.  Normative References
+8.  References
+
+8.1.  Normative References
 
    [I-D.draft-foudil-securitytxt]
               Foudil, E. and Y. Shafranovich, "A File Format to Aid in
@@ -254,21 +275,53 @@ Table of Contents
               (URIs)", RFC 8615, DOI 10.17487/RFC8615, May 2019,
               <https://www.rfc-editor.org/rfc/rfc8615>.
 
+8.2.  Informative References
+
+   [IPV4_TOPOLOGY]
+              Beverly, R., "Yarrp’ing the Internet Randomized High-Speed
+              Active Topology Discovery", DOI 10.1145/2987443.2987479,
+              2016, <http://www.cmand.org/papers/yarrp-imc16.pdf>.
+
+   [IPV6_TOPOLOGY]
+              Beverly, R., Durairajan, R., Plonka, D., and J.P. Rohrer,
+              "In the IP of the Beholder Strategies for Active IPv6
+              Topology Discovery", DOI 10.1145/3278532.3278559, 2018,
+              <http://www.cmand.org/papers/beholder-imc18.pdf>.
+
+   [LARGE_SCALE]
+              Donnet, B., Raoult, P., Friedman, T., and M. Crovella,
+              "Efficient Algorithms for Large-Scale Topology Discovery",
+              DOI 10.1145/1071690.1064256, 2005,
+              <https://dl.acm.org/doi/pdf/10.1145/1071690.1064256>.
+
+   [RFC7872]  Gont, F., Linkova, J., Chown, T., and W. Liu,
+              "Observations on the Dropping of Packets with IPv6
+              Extension Headers in the Real World", RFC 7872,
+              DOI 10.17487/RFC7872, June 2016,
+              <https://www.rfc-editor.org/rfc/rfc7872>.
+
 Acknowledgments
 
-   The authors would like to thank Benoit Donnet, Alain Fiocco, Mark
+   The authors would like to thank Alain Fiocco, Mehdi Kouhen, and Mark
    Townsley for helpful discussions as well as Raphael Leas for an early
    implementation.
 
 Authors' Addresses
 
-   Ëric Vyncke
+   Éric Vyncke
    Cisco
    De Kleetlaan 64
    1831 Diegem
    Belgium
 
    Email: evyncke@cisco.com
+
+
+   Benoît Donnet
+   Université de Liège
+   Belgium
+
+   Email: benoit.donnet@uliege.be
 
 
    Justin Iurman

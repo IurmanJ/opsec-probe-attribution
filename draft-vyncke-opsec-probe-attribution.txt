@@ -257,7 +257,7 @@ Table of Contents
 Acknowledgments
 
    The authors would like to thank Benoit Donnet, Alain Fiocco, Mark
-   Townsley for helpful discussion as well as Raphael Leas for an early
+   Townsley for helpful discussions as well as Raphael Leas for an early
    implementation.
 
 Authors' Addresses

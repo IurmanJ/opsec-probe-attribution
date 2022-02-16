@@ -109,7 +109,7 @@ Table of Contents
 
    *  what is its purpose,
 
-   *  and more significant who to contact for further information or
+   *  and more significantly who to contact for further information or
       stop the probing.
 
    Note: it is expected that only good-willing researchers will use
@@ -163,7 +163,11 @@ Table of Contents
       paragraph);
 
    *  for a [RFC8200] IPv6 packet with either hop-by-hop or destination
-      options headers, in the PadN option;
+      options headers, in the PadN option.  Note that, per the
+      informational [RFC4942] section 2.1.9.5, it is suggested that PadN
+      option should only contain 0x0 and be smaller than 8 octets, so
+      the proposed insertion of the URI in PadN option could have
+      influence on the measurement itself;
 
    *  etc.
 
@@ -293,6 +297,11 @@ Table of Contents
               "Efficient Algorithms for Large-Scale Topology Discovery",
               DOI 10.1145/1071690.1064256, 2005,
               <https://dl.acm.org/doi/pdf/10.1145/1071690.1064256>.
+
+   [RFC4942]  Davies, E., Krishnan, S., and P. Savola, "IPv6 Transition/
+              Co-existence Security Considerations", RFC 4942,
+              DOI 10.17487/RFC4942, September 2007,
+              <https://www.rfc-editor.org/rfc/rfc4942>.
 
    [RFC7872]  Gont, F., Linkova, J., Chown, T., and W. Liu,
               "Observations on the Dropping of Packets with IPv6

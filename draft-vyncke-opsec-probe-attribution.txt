@@ -5,8 +5,8 @@
 Operational Security Capabilities for IP Network InfrastructureE. Vyncke
 Internet-Draft                                                     Cisco
 Intended status: Informational                                 J. Iurman
-Expires: 19 August 2022                              Université de Liège
-                                                        15 February 2022
+Expires: 20 August 2022                              Université de Liège
+                                                        16 February 2022
 
 
                      Attribution of Internet Probes
@@ -15,7 +15,7 @@ Expires: 19 August 2022                              Université de Liège
 Abstract
 
    When doing some Internet-wide measurements, it is often necessary to
-   send active probes to either collaborating parties or non
+   send active probes to either collaborating parties or non-
    collaborating parties; the latter is similar scan and could be
    perceived as aggressive.  This document proposes a couple of simple
    techniques allowing any party or organization to understand what this
@@ -55,7 +55,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 19 August 2022.
+   This Internet-Draft will expire on 20 August 2022.
 
 Copyright Notice
 
@@ -89,7 +89,7 @@ Table of Contents
 
    When doing some Internet-wide measurements, it is frequently
    necessary to send active probes to either collaborating parties or
-   non collaborating parties.
+   non-collaborating parties.
 
    Sending unsolicited probes should be done at a rate low enough to
    avoid causing a denial of services.  But even at a low rate, those
@@ -139,7 +139,7 @@ Table of Contents
 
    *  preferred-languages.
 
-   Plus another one "description" which is a URI pointing a document
+   Plus, another one "description" which is a URI pointing a document
    describing the measurement.
 
 3.  In-band Probe Attribution
@@ -162,23 +162,23 @@ Table of Contents
    *  for a [RFC8200] IPv6 packet with either hop-by-hop or destination
       options headers, in the PadN option;
 
-   *  etc
+   *  etc.
 
    The URI should start at the first octet of the payload and should be
    terminated by an octet of 0x0, i.e., it must be null terminated.
 
    Note: using the above technique produces a valid and legit packet for
    all the nodes forwarding and receiving the probe.  The node receiving
-   the probe may or may not process the received packet but this should
+   the probe may or may not process the received packet, but this should
    cause no harm if the probing rate is very low as compared to the
    network bandwidth and to the processing capacity of all the nodes.
 
 4.  Out-of-band Probe Attribution
 
    When it is not possible to include the "probe description URI" in the
-   probe, then a specific URI based on the source address of thr probe
-   must be constructed based on [RFC8615], e.g., for a probe source
-   address of 2001:db8::dead, the following URI are constructed:
+   probe, then a specific URI must be constructed based on the source
+   address of the probe packet following [RFC8615], e.g., for a probe
+   source address of 2001:db8::dead, the following URI are constructed:
 
    *  if the reverse DNS record for 2001:db8::dead exists, e.g.,
       "example.net", then the URI is "https://example.net/.well-known/
@@ -195,7 +195,7 @@ Table of Contents
 
    While it is expected that only good-willing researchers will use
    these techniques, they will simplify and shorten the time to identify
-   a probing accross the Internet.
+   a probing across the Internet.
 
    As both proposed techniques rely on the IP source address, they are
    vulnerable to IP spoofing.
